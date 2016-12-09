@@ -382,6 +382,10 @@ void keys(unsigned char key, int x, int y)
         case '5':
             pyramid_wall_4 = !pyramid_wall_4;
             break;
+
+        case 'e':
+            egg_pyrmid = !egg_pyrmid;
+            break;
     }
 
     RenderScene(); // przerysowanie obrazu sceny
