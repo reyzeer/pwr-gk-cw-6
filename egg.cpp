@@ -25,7 +25,7 @@ void Egg::prepareTexturePosition()
 	for (int i = 0; i < n; i++) {
 		texturePosition[i] = new float * [n];
 		for (int j = 0; j < n; j++) {
-			texturePosition[i][j] = new float[3];
+			texturePosition[i][j] = new float[2];
 		}
 	}
 
@@ -66,15 +66,16 @@ void Egg::transform2Egg()
 void Egg::generateTexturePosition()
 {
 
+	prepareTexturePosition();
+
 	distance = 1.0f / ((float)n - 1);
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
-			float u = distance * (float) i;
-			float v = distance * (float) j;
-			texturePosition[i][j][0] = x(u, v) - posX;
-			texturePosition[i][j][1] = y(u, v) - posY;
-			texturePosition[i][j][2] = z(u, v) - posZ;
+			float _x = distance * (float) i;
+			float _y = distance * (float) j;
+			texturePosition[i][j][0] = _x;
+			texturePosition[i][j][1] = _y;
 		}
 	}
 
@@ -355,6 +356,7 @@ void Egg::insertVertexWithColor(int i, int j)
 	else {
 		glColor3f(1.0f, 1.0f, 1.0f);
 	}
+	glTexCoord2fv(texturePosition[i][j]);
 	glNormal3fv(normalVector[i][j]);
 	glVertex3fv(matrix[i][j]);
 }
@@ -431,6 +433,7 @@ void Egg::draw()
 		prepareMatrix();
 		transform2Egg();
 		generateNormalVector();
+		generateTexturePosition();
 
         if (colorAvailable) {
             randColors();
