@@ -199,31 +199,31 @@ void RenderScene(void)
     RDraw::Axes();
     egg.draw();
 
-    if (moveEggLights) {
+//    if (moveEggLights) {
+//
+//        if (statusKey == 1) {
+//            setThetaLight(0);
+//            setPhiLight(0);
+//        } else if (statusKey == 2) {
+//            setThetaLight(1);
+//            setPhiLight(1);
+//        }
+//
+//    }
 
-        if (statusKey == 1) {
-            setThetaLight(0);
-            setPhiLight(0);
-        } else if (statusKey == 2) {
-            setThetaLight(1);
-            setPhiLight(1);
-        }
-
-    }
-
-    light_position_blue[0] = lightsR * cos(theta_light[0]) * cos(phi_light[0]);
-    light_position_blue[1] = lightsR * sin(phi_light[0]);
-    light_position_blue[2] = lightsR * sin(theta_light[0]) * cos(phi_light[0]);
-    light_position_blue[3] = 1.0;
-    glLightfv(GL_LIGHT0, GL_POSITION, light_position_blue);
-    //Aktualizacja pozycji swiatla 0
-
-    light_position_red[0] = lightsR * cos(theta_light[1]) * cos(phi_light[1]);
-    light_position_red[1] = lightsR * sin(phi_light[1]);
-    light_position_red[2] = lightsR * sin(theta_light[1]) * cos(phi_light[1]);
-    light_position_red[3] = 1.0;
-    glLightfv(GL_LIGHT1, GL_POSITION, light_position_red);
-    //Aktualizacja pozycji swiatla 1
+//    light_position_blue[0] = lightsR * cos(theta_light[0]) * cos(phi_light[0]);
+//    light_position_blue[1] = lightsR * sin(phi_light[0]);
+//    light_position_blue[2] = lightsR * sin(theta_light[0]) * cos(phi_light[0]);
+//    light_position_blue[3] = 1.0;
+//    glLightfv(GL_LIGHT0, GL_POSITION, light_position_blue);
+//    //Aktualizacja pozycji swiatla 0
+//
+//    light_position_red[0] = lightsR * cos(theta_light[1]) * cos(phi_light[1]);
+//    light_position_red[1] = lightsR * sin(phi_light[1]);
+//    light_position_red[2] = lightsR * sin(theta_light[1]) * cos(phi_light[1]);
+//    light_position_red[3] = 1.0;
+//    glLightfv(GL_LIGHT1, GL_POSITION, light_position_red);
+//    //Aktualizacja pozycji swiatla 1
 
     //glutWireTeapot(3.0); // Narysowanie obrazu czajnika do herbaty
 
@@ -373,55 +373,56 @@ void lightRed()
 void MyInit(void)
 {
 
-    //glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    // Kolor czyszcący (wypełnienia okna) ustawiono na czarny
-
-    /*************************************************************************************/
-    //  Definicja materiału z jakiego zrobiony jest czajnik
-    //  i definicja źródła światła
-    /*************************************************************************************/
-
-    /*************************************************************************************/
-    // Definicja materiału z jakiego zrobiony jest czajnik
-
-        GLfloat mat_ambient[]  = {1.0, 1.0, 1.0, 1.0};
-        // współczynniki ka =[kar,kag,kab] dla światła otoczenia
-
-        GLfloat mat_diffuse[]  = {1.0, 1.0, 1.0, 1.0};
-        // współczynniki kd =[kdr,kdg,kdb] światła rozproszonego
-
-        GLfloat mat_specular[] = {1.0, 1.0, 1.0, 1.0};
-        // współczynniki ks =[ksr,ksg,ksb] dla światła odbitego
-
-        GLfloat mat_shininess  = {20.0};
-        // współczynnik n opisujący połysk powierzchni
-
-    /*************************************************************************************/
-    // Ustawienie parametrów materiału i źródła światła
-    /*************************************************************************************/
-    // Ustawienie patrametrów materiału
-
-        glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
-        glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
-        glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
-        glMaterialf(GL_FRONT, GL_SHININESS, mat_shininess);
-
-    /*************************************************************************************/
-    // Dodanie ustawienie światła
-
-    lightBlue();
-    lightRed();
-
-    /*************************************************************************************/
-    // Ustawienie opcji systemu oświetlania sceny
-
-        glShadeModel(GL_SMOOTH); // właczenie łagodnego cieniowania
-        glEnable(GL_LIGHTING);   // właczenie systemu oświetlenia sceny
-        glEnable(GL_LIGHT0);     // włączenie źródła o numerze 0
-        glEnable(GL_LIGHT1);     // włączenie źródła o numerze 1
-        glEnable(GL_DEPTH_TEST); // włączenie mechanizmu z-bufora
-
-    /*************************************************************************************/
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+//
+//    // Kolor czyszcący (wypełnienia okna) ustawiono na czarny
+//
+//    /*************************************************************************************/
+//    //  Definicja materiału z jakiego zrobiony jest czajnik
+//    //  i definicja źródła światła
+//    /*************************************************************************************/
+//
+//    /*************************************************************************************/
+//    // Definicja materiału z jakiego zrobiony jest czajnik
+//
+//        GLfloat mat_ambient[]  = {1.0, 1.0, 1.0, 1.0};
+//        // współczynniki ka =[kar,kag,kab] dla światła otoczenia
+//
+//        GLfloat mat_diffuse[]  = {1.0, 1.0, 1.0, 1.0};
+//        // współczynniki kd =[kdr,kdg,kdb] światła rozproszonego
+//
+//        GLfloat mat_specular[] = {1.0, 1.0, 1.0, 1.0};
+//        // współczynniki ks =[ksr,ksg,ksb] dla światła odbitego
+//
+//        GLfloat mat_shininess  = {20.0};
+//        // współczynnik n opisujący połysk powierzchni
+//
+//    /*************************************************************************************/
+//    // Ustawienie parametrów materiału i źródła światła
+//    /*************************************************************************************/
+//    // Ustawienie patrametrów materiału
+//
+//        glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+//        glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+//        glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+//        glMaterialf(GL_FRONT, GL_SHININESS, mat_shininess);
+//
+//    /*************************************************************************************/
+//    // Dodanie ustawienie światła
+//
+//    lightBlue();
+//    lightRed();
+//
+//    /*************************************************************************************/
+//    // Ustawienie opcji systemu oświetlania sceny
+//
+//        glShadeModel(GL_SMOOTH); // właczenie łagodnego cieniowania
+//        glEnable(GL_LIGHTING);   // właczenie systemu oświetlenia sceny
+//        glEnable(GL_LIGHT0);     // włączenie źródła o numerze 0
+//        glEnable(GL_LIGHT1);     // włączenie źródła o numerze 1
+//        glEnable(GL_DEPTH_TEST); // włączenie mechanizmu z-bufora
+//
+//    /*************************************************************************************/
 
 }
 

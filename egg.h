@@ -22,7 +22,7 @@ private:
     float *** normalVector;
 
     /// Generate random color for egg
-    bool colorAvailable = false;
+    bool colorAvailable = true;
 
     /// IS egg render
     bool build = false;
