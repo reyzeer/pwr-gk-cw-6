@@ -18,6 +18,19 @@ void Egg::prepareMatrix()
 
 }
 
+void Egg::prepareTexturePosition()
+{
+
+	texturePosition = new float ** [n];
+	for (int i = 0; i < n; i++) {
+		texturePosition[i] = new float * [n];
+		for (int j = 0; j < n; j++) {
+			texturePosition[i][j] = new float[3];
+		}
+	}
+
+}
+
 float Egg::x(float u, float v)
 {
 	return (-90 * pow(u, 5) + 225 * pow(u, 4) - 270 * pow(u, 3) + 180 * pow(u, 2) - 45 * u) * cos(PI * v);
@@ -45,6 +58,23 @@ void Egg::transform2Egg()
 			matrix[i][j][0] = x(u, v) - posX;
 			matrix[i][j][1] = y(u, v) - posY;
 			matrix[i][j][2] = z(u, v) - posZ;
+		}
+	}
+
+}
+
+void Egg::generateTexturePosition()
+{
+
+	distance = 1.0f / ((float)n - 1);
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			float u = distance * (float) i;
+			float v = distance * (float) j;
+			texturePosition[i][j][0] = x(u, v) - posX;
+			texturePosition[i][j][1] = y(u, v) - posY;
+			texturePosition[i][j][2] = z(u, v) - posZ;
 		}
 	}
 

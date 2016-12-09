@@ -18,11 +18,14 @@ private:
     /// Colors for all points in egg
     float *** colors;
 
+    /// Points for atache texture
+    float *** texturePosition;
+
     /// Normal vectors for all points in egg
     float *** normalVector;
 
     /// Generate random color for egg
-    bool colorAvailable = true;
+    bool colorAvailable = false;
 
     /// IS egg render
     bool build = false;
@@ -35,11 +38,16 @@ private:
     /// Generate array for normal vector
     void prepareNormalVector();
 
+    /// Generate array for normal vector
+    void prepareTexturePosition();
+
     float x(float u, float v);
     float y(float u, float v);
     float z(float u, float v);
 
     void generateNormalVector();
+
+    void generateTexturePosition();
 
     float xu(float u, float v);
     float xv(float u, float v);
