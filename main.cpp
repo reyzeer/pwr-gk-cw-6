@@ -214,11 +214,12 @@ void renderPyramid()
         glEnd();
 
         glBegin(GL_TRIANGLES);
-        glTexCoord2f(1.0f, 0.0f);
+
+        glTexCoord2f(0.5f, 1.0f);
         glVertex3f(posX, posY + size, posZ);
         glTexCoord2f(0.0f, 0.0f);
         glVertex3f(posX + size, posY + size, posZ);
-        glTexCoord2f(0.5f, 1.0f);
+        glTexCoord2f(1.0f, 0.0f);
         glVertex3f(posX + size, posY, posZ);
         glEnd();
     }
