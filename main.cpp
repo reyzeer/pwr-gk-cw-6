@@ -197,7 +197,27 @@ void RenderScene(void)
     setViewer();
 
     RDraw::Axes();
-    egg.draw();
+    //egg.draw();
+
+    // Ostrosłup
+
+    float posX = 0.0f;
+    float posY = 0.0f;
+    float posZ = 0.0f;
+    float size = 5;
+
+    //Podstawa
+    glBegin(GL_TRIANGLES);
+        glVertex3f(posX, posY, posZ);
+        glVertex3f(posX + size, posY, posZ);
+        glVertex3f(posX, posY + size, posZ);
+    glEnd();
+
+    glBegin(GL_TRIANGLES);
+        glVertex3f(posX + size, posY + size, posZ);
+        glVertex3f(posX, posY + size, posZ);
+        glVertex3f(posX + size, posY, posZ);
+    glEnd();
 
 //    if (moveEggLights) {
 //
@@ -488,10 +508,8 @@ void MyInit(void)
 
     // Dla teksturowania ----------------------------------------------
 
-
-
-/*************************************************************************************/
-// Zmienne dla obrazu tekstury
+    /*************************************************************************************/
+    // Zmienne dla obrazu tekstury
 
     GLbyte *pBytes;
     GLint ImWidth, ImHeight, ImComponents;
@@ -509,7 +527,7 @@ void MyInit(void)
     /*************************************************************************************/
     //  Przeczytanie obrazu tekstury z pliku o nazwie tekstura.tga
 
-    pBytes = LoadTGAImage("D1_t.tga", &ImWidth, &ImHeight, &ImComponents, &ImFormat);
+    pBytes = LoadTGAImage("t_1024.tga", &ImWidth, &ImHeight, &ImComponents, &ImFormat);
 
     /*************************************************************************************/
     // Zdefiniowanie tekstury 2-D

@@ -76,6 +76,22 @@ void Egg::generateTexturePosition()
 			float _y = distance * (float) j;
 			texturePosition[i][j][0] = _x;
 			texturePosition[i][j][1] = _y;
+
+			/* TODO druga tekstury połowa jajka
+			 *
+			 * if (i == n / 2) {
+				vector4Top(i, j, x, y, z);
+			}
+			else if (i == n - 1 || i == 0) {
+				vector4Bottom(i, j, x, y, z);
+			}
+			else if (i <= n / 2) {
+				vector4SideFront(i, j, x, y, z);
+			}
+			else {
+				vector4SideBack(i, j, x, y, z);
+			}*/
+
 		}
 	}
 
