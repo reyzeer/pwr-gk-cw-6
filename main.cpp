@@ -219,6 +219,13 @@ void RenderScene(void)
         glVertex3f(posX + size, posY, posZ);
     glEnd();
 
+    //Ściana 1
+    glBegin(GL_TRIANGLES);
+        glVertex3f(posX, posY, posZ);
+        glVertex3f(posX + size, posY, posZ);
+        glVertex3f(posX + size / 2, posY + size / 2, posZ + size);
+    glEnd();
+
 //    if (moveEggLights) {
 //
 //        if (statusKey == 1) {
