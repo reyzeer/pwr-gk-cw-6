@@ -67,7 +67,7 @@ bool pyramid_wall_2 = true;
 bool pyramid_wall_3 = true;
 bool pyramid_wall_4 = true;
 
-bool egg_pyrmid = false;
+bool egg_pyramid = false;
 
 /*************************************************************************************/
 
@@ -293,7 +293,7 @@ void RenderScene(void)
 
     RDraw::Axes();
 
-    if (egg_pyrmid) {
+    if (egg_pyramid) {
         egg.draw();
     } else {
         renderPyramid();
@@ -389,7 +389,7 @@ void keys(unsigned char key, int x, int y)
             break;
 
         case 'e':
-            egg_pyrmid = !egg_pyrmid;
+            egg_pyramid = !egg_pyramid;
             break;
     }
 

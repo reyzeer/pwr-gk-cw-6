@@ -72,31 +72,17 @@ void Egg::generateTexturePosition()
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
+
 			float _x = distance * (float) i;
 			float _y = distance * (float) j;
 
-			if (i >= n/2) {
+			if (i > n/2) {
 				_x *= -1.0f;
 				_y *= -1.0f;
 			}
 
 			texturePosition[i][j][0] = _x;
 			texturePosition[i][j][1] = _y;
-
-			/* TODO druga tekstury połowa jajka
-			 *
-			 * if (i == n / 2) {
-				vector4Top(i, j, x, y, z);
-			}
-			else if (i == n - 1 || i == 0) {
-				vector4Bottom(i, j, x, y, z);
-			}
-			else if (i <= n / 2) {
-				vector4SideFront(i, j, x, y, z);
-			}
-			else {
-				vector4SideBack(i, j, x, y, z);
-			}*/
 
 		}
 	}
@@ -391,7 +377,18 @@ void Egg::drawTriangles()
 	for (int i = 0; i < n - 1; i++) {
 		for (int j = 0; j < n - 1; j++) {
 
-			if (i >= n/2) {
+			// generwanie trójkątóœ zgodnie z wklęsłością i wypukłością przestrzeni
+			// potrzebne pryz poprawnym wyświetlaniu tekstur
+			if (i >= n/0.75) {
+				//Triangle
+				insertVertexWithColor(i + 1, j);
+				insertVertexWithColor(i, j + 1);
+				insertVertexWithColor(i, j);
+
+				insertVertexWithColor(i + 1, j + 1);
+				insertVertexWithColor(i, j + 1);
+				insertVertexWithColor(i + 1, j);
+			} else if (i >= n/2) {
 				//Triangle
 				insertVertexWithColor(i, j);
 				insertVertexWithColor(i, j + 1);
@@ -448,12 +445,18 @@ void Egg::destructNormalVector()
     destructDataArray(normalVector);
 }
 
+void Egg::destructTexturePosition()
+{
+	destructDataArray(texturePosition);
+}
+
 void Egg::destruct()
 {
 
     destructMatrix();
     destructColors();
     destructNormalVector();
+	destructTexturePosition();
 
 	build = false;
 

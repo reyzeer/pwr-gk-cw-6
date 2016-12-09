@@ -110,6 +110,9 @@ private:
     /// Deleted this->normalVector
     void destructNormalVector();
 
+    /// Deleted this->normalVector
+    void destructTexturePosition();
+
 public:
 
     /// Deleted all egg matrix from memory
