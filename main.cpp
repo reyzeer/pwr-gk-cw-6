@@ -291,9 +291,13 @@ void RenderScene(void)
     setViewer();
 
     RDraw::Axes();
-    //egg.draw();
 
-    renderPyramid();
+    if (egg_pyrmid) {
+        egg.draw();
+    } else {
+        renderPyramid();
+
+    }
 
 //    if (moveEggLights) {
 //

@@ -74,6 +74,12 @@ void Egg::generateTexturePosition()
 		for (int j = 0; j < n; j++) {
 			float _x = distance * (float) i;
 			float _y = distance * (float) j;
+
+			if (i >= n/2) {
+				_x *= -1.0f;
+				_y *= -1.0f;
+			}
+
 			texturePosition[i][j][0] = _x;
 			texturePosition[i][j][1] = _y;
 
@@ -385,15 +391,27 @@ void Egg::drawTriangles()
 	for (int i = 0; i < n - 1; i++) {
 		for (int j = 0; j < n - 1; j++) {
 
-			//Triangle
-			insertVertexWithColor(i, j);
-			insertVertexWithColor(i, j + 1);
-			insertVertexWithColor(i + 1, j);
+			if (i >= n/2) {
+				//Triangle
+				insertVertexWithColor(i, j);
+				insertVertexWithColor(i, j + 1);
+				insertVertexWithColor(i + 1, j);
 
-			//Triangle
-			insertVertexWithColor(i, j + 1);
-			insertVertexWithColor(i + 1, j);
-			insertVertexWithColor(i + 1, j + 1);
+				//Triangle
+				insertVertexWithColor(i + 1, j);
+				insertVertexWithColor(i, j + 1);
+				insertVertexWithColor(i + 1, j + 1);
+			} else {
+
+				//Triangle
+				insertVertexWithColor(i + 1, j);
+				insertVertexWithColor(i, j + 1);
+				insertVertexWithColor(i, j);
+
+				insertVertexWithColor(i + 1, j + 1);
+				insertVertexWithColor(i, j + 1);
+				insertVertexWithColor(i + 1, j);
+			}
 
 		}
 	}
