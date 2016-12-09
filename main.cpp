@@ -210,61 +210,61 @@ void RenderScene(void)
 
     //Podstawa
     glBegin(GL_TRIANGLES);
-        glTexCoord2f(0.0f, 0.0f);
-        glVertex3f(posX, posY, posZ);
         glTexCoord2f(1.0f, 0.0f);
         glVertex3f(posX + size, posY, posZ);
+        glTexCoord2f(0.0f, 0.0f);
+        glVertex3f(posX, posY, posZ);
         glTexCoord2f(0.5f, 1.0f);
         glVertex3f(posX, posY + size, posZ);
     glEnd();
 
     glBegin(GL_TRIANGLES);
-    glTexCoord2f(0.0f, 0.0f);
-        glVertex3f(posX + size, posY + size, posZ);
-    glTexCoord2f(1.0f, 0.0f);
+        glTexCoord2f(1.0f, 0.0f);
         glVertex3f(posX, posY + size, posZ);
-    glTexCoord2f(0.5f, 1.0f);
+        glTexCoord2f(0.0f, 0.0f);
+        glVertex3f(posX + size, posY + size, posZ);
+        glTexCoord2f(0.5f, 1.0f);
         glVertex3f(posX + size, posY, posZ);
     glEnd();
 
     //Ściana 1
     glBegin(GL_TRIANGLES);
-    glTexCoord2f(0.0f, 0.0f);
+        glTexCoord2f(0.0f, 0.0f);
         glVertex3f(posX, posY, posZ);
-    glTexCoord2f(1.0f, 0.0f);
+        glTexCoord2f(1.0f, 0.0f);
         glVertex3f(posX + size, posY, posZ);
-    glTexCoord2f(0.5f, 1.0f);
+        glTexCoord2f(0.5f, 1.0f);
         glVertex3f(posX + size / 2, posY + size / 2, posZ + size);
     glEnd();
 
     //Ściana 2
     glBegin(GL_TRIANGLES);
-    glTexCoord2f(0.0f, 0.0f);
-    glVertex3f(posX, posY + size, posZ);
-    glTexCoord2f(1.0f, 0.0f);
-    glVertex3f(posX, posY, posZ);
-    glTexCoord2f(0.5f, 1.0f);
-    glVertex3f(posX + size / 2, posY + size / 2, posZ + size);
+        glTexCoord2f(0.0f, 0.0f);
+        glVertex3f(posX, posY + size, posZ);
+        glTexCoord2f(1.0f, 0.0f);
+        glVertex3f(posX, posY, posZ);
+        glTexCoord2f(0.5f, 1.0f);
+        glVertex3f(posX + size / 2, posY + size / 2, posZ + size);
     glEnd();
 
     //Ściana 3
     glBegin(GL_TRIANGLES);
-    glTexCoord2f(0.0f, 0.0f);
-    glVertex3f(posX + size, posY + size, posZ);
-    glTexCoord2f(1.0f, 0.0f);
-    glVertex3f(posX + size, posY, posZ);
-    glTexCoord2f(0.5f, 1.0f);
-    glVertex3f(posX + size / 2, posY + size / 2, posZ + size);
+        glTexCoord2f(0.0f, 0.0f);
+        glVertex3f(posX + size, posY + size, posZ);
+        glTexCoord2f(1.0f, 0.0f);
+        glVertex3f(posX + size, posY, posZ);
+        glTexCoord2f(0.5f, 1.0f);
+        glVertex3f(posX + size / 2, posY + size / 2, posZ + size);
     glEnd();
 
     //Ściana 4
     glBegin(GL_TRIANGLES);
-    glTexCoord2f(0.0f, 0.0f);
-    glVertex3f(posX + size, posY + size, posZ);
-    glTexCoord2f(1.0f, 0.0f);
-    glVertex3f(posX, posY + size, posZ);
-    glTexCoord2f(0.5f, 1.0f);
-    glVertex3f(posX + size / 2, posY + size / 2, posZ + size);
+        glTexCoord2f(0.0f, 0.0f);
+        glVertex3f(posX + size, posY + size, posZ);
+        glTexCoord2f(1.0f, 0.0f);
+        glVertex3f(posX, posY + size, posZ);
+        glTexCoord2f(0.5f, 1.0f);
+        glVertex3f(posX + size / 2, posY + size / 2, posZ + size);
     glEnd();
 
 //    if (moveEggLights) {
@@ -570,7 +570,7 @@ void MyInit(void)
     /*************************************************************************************/
     // Teksturowanie będzie prowadzone tyko po jednej stronie ściany
 
-    //glEnable(GL_CULL_FACE);
+    glEnable(GL_CULL_FACE);
 
     /*************************************************************************************/
     //  Przeczytanie obrazu tekstury z pliku o nazwie tekstura.tga
