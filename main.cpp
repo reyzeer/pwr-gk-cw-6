@@ -504,7 +504,7 @@ void MyInit(void)
     /*************************************************************************************/
     // Teksturowanie będzie prowadzone tyko po jednej stronie ściany
 
-    glEnable(GL_CULL_FACE);
+    //glEnable(GL_CULL_FACE);
 
     /*************************************************************************************/
     //  Przeczytanie obrazu tekstury z pliku o nazwie tekstura.tga
