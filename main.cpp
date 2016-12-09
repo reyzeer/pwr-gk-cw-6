@@ -201,9 +201,9 @@ void RenderScene(void)
 
     // Ostrosłup
 
-    float posX = 0.0f;
-    float posY = 0.0f;
-    float posZ = 0.0f;
+    float posX = -2.5f;
+    float posY = -2.5f;
+    float posZ = -2.5f;
     float size = 5;
 
     //Podstawa
