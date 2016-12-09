@@ -61,6 +61,14 @@ GLfloat light_position_blue[] = {0.0, 0.0, 10.0, 1.0};
 /// Position of red light
 GLfloat light_position_red[] = {0.0, 0.0, 10.0, 1.0};
 
+bool pyramid_bottom = true;
+bool pyramid_wall_1 = true;
+bool pyramid_wall_2 = true;
+bool pyramid_wall_3 = true;
+bool pyramid_wall_4 = true;
+
+bool egg_pyrmid = false;
+
 /*************************************************************************************/
 
 /// Funkcja "bada" stan myszy i ustawia wartości odpowiednich zmiennych globalnych
@@ -194,68 +202,79 @@ void renderPyramid()
 
     glColor3f(1.0f, 1.0f, 1.0f);
 
-    //Podstawa
-    glBegin(GL_TRIANGLES);
-    glTexCoord2f(1.0f, 0.0f);
-    glVertex3f(posX + size, posY, posZ);
-    glTexCoord2f(0.0f, 0.0f);
-    glVertex3f(posX, posY, posZ);
-    glTexCoord2f(0.5f, 1.0f);
-    glVertex3f(posX, posY + size, posZ);
-    glEnd();
+    if (pyramid_bottom) {
+        //Podstawa
+        glBegin(GL_TRIANGLES);
+        glTexCoord2f(1.0f, 0.0f);
+        glVertex3f(posX + size, posY, posZ);
+        glTexCoord2f(0.0f, 0.0f);
+        glVertex3f(posX, posY, posZ);
+        glTexCoord2f(0.5f, 1.0f);
+        glVertex3f(posX, posY + size, posZ);
+        glEnd();
 
-    glBegin(GL_TRIANGLES);
-    glTexCoord2f(1.0f, 0.0f);
-    glVertex3f(posX, posY + size, posZ);
-    glTexCoord2f(0.0f, 0.0f);
-    glVertex3f(posX + size, posY + size, posZ);
-    glTexCoord2f(0.5f, 1.0f);
-    glVertex3f(posX + size, posY, posZ);
-    glEnd();
+        glBegin(GL_TRIANGLES);
+        glTexCoord2f(1.0f, 0.0f);
+        glVertex3f(posX, posY + size, posZ);
+        glTexCoord2f(0.0f, 0.0f);
+        glVertex3f(posX + size, posY + size, posZ);
+        glTexCoord2f(0.5f, 1.0f);
+        glVertex3f(posX + size, posY, posZ);
+        glEnd();
+    }
 
-    //Ściana 1
-    glBegin(GL_TRIANGLES);
-//    glColor3f(1.0f, 0.0f, 0.0f);
-    glTexCoord2f(0.0f, 0.0f);
-    glVertex3f(posX, posY, posZ);
-    glTexCoord2f(1.0f, 0.0f);
-    glVertex3f(posX + size, posY, posZ);
-    glTexCoord2f(0.5f, 1.0f);
-    glVertex3f(posX + size / 2, posY + size / 2, posZ + size);
-    glEnd();
+    if (pyramid_wall_1) {
+        //Ściana 1
+        glBegin(GL_TRIANGLES);
+        //    glColor3f(1.0f, 0.0f, 0.0f);
+        glTexCoord2f(0.0f, 0.0f);
+        glVertex3f(posX, posY, posZ);
+        glTexCoord2f(1.0f, 0.0f);
+        glVertex3f(posX + size, posY, posZ);
+        glTexCoord2f(0.5f, 1.0f);
+        glVertex3f(posX + size / 2, posY + size / 2, posZ + size);
+        glEnd();
+    }
 
-    //Ściana 2
-    glBegin(GL_TRIANGLES);
+    if (pyramid_wall_2) {
+        //Ściana 2
+        glBegin(GL_TRIANGLES);
 //    glColor3f(0.0f, 1.0f, 0.0f);
-    glTexCoord2f(0.0f, 0.0f);
-    glVertex3f(posX, posY + size, posZ);
-    glTexCoord2f(1.0f, 0.0f);
-    glVertex3f(posX, posY, posZ);
-    glTexCoord2f(0.5f, 1.0f);
-    glVertex3f(posX + size / 2, posY + size / 2, posZ + size);
-    glEnd();
+        glTexCoord2f(0.0f, 0.0f);
+        glVertex3f(posX, posY + size, posZ);
+        glTexCoord2f(1.0f, 0.0f);
+        glVertex3f(posX, posY, posZ);
+        glTexCoord2f(0.5f, 1.0f);
+        glVertex3f(posX + size / 2, posY + size / 2, posZ + size);
+        glEnd();
+    }
 
-    //Ściana 3
-    glBegin(GL_TRIANGLES);
+    if (pyramid_wall_3) {
+        //Ściana 3
+        glBegin(GL_TRIANGLES);
 //    glColor3f(0.0f, 0.0f, 1.0f);
-    glTexCoord2f(1.0f, 0.0f);
-    glVertex3f(posX + size, posY, posZ);
-    glTexCoord2f(0.0f, 0.0f);
-    glVertex3f(posX + size, posY + size, posZ);
-    glTexCoord2f(0.5f, 1.0f);
-    glVertex3f(posX + size / 2, posY + size / 2, posZ + size);
-    glEnd();
+        glTexCoord2f(1.0f, 0.0f);
+        glVertex3f(posX + size, posY, posZ);
+        glTexCoord2f(0.0f, 0.0f);
+        glVertex3f(posX + size, posY + size, posZ);
+        glTexCoord2f(0.5f, 1.0f);
+        glVertex3f(posX + size / 2, posY + size / 2, posZ + size);
+        glEnd();
+    }
 
-    //Ściana 4
-    glBegin(GL_TRIANGLES);
-//    glColor3f(1.0f, 1.0f, 1.0f);
-    glTexCoord2f(0.0f, 0.0f);
-    glVertex3f(posX + size, posY + size, posZ);
-    glTexCoord2f(1.0f, 0.0f);
-    glVertex3f(posX, posY + size, posZ);
-    glTexCoord2f(0.5f, 1.0f);
-    glVertex3f(posX + size / 2, posY + size / 2, posZ + size);
-    glEnd();
+    if (pyramid_wall_4) {
+        //Ściana 4
+        glBegin(GL_TRIANGLES);
+    //    glColor3f(1.0f, 1.0f, 1.0f);
+        glTexCoord2f(0.0f, 0.0f);
+        glVertex3f(posX + size, posY + size, posZ);
+        glTexCoord2f(1.0f, 0.0f);
+        glVertex3f(posX, posY + size, posZ);
+        glTexCoord2f(0.5f, 1.0f);
+        glVertex3f(posX + size / 2, posY + size / 2, posZ + size);
+        glEnd();
+    }
+
 }
 
 /// Funkcja określająca co ma być rysowane (zawsze wywoływana gdy trzeba przerysować scenę)
@@ -346,6 +365,22 @@ void keys(unsigned char key, int x, int y)
             break;
         case '.':
             moveEggLights = true;
+            break;
+
+        case '1':
+            pyramid_bottom = !pyramid_bottom;
+            break;
+        case '2':
+            pyramid_wall_1 = !pyramid_wall_1;
+            break;
+        case '3':
+            pyramid_wall_2 = !pyramid_wall_2;
+            break;
+        case '4':
+            pyramid_wall_3 = !pyramid_wall_3;
+            break;
+        case '5':
+            pyramid_wall_4 = !pyramid_wall_4;
             break;
     }
 
